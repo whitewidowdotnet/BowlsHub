@@ -1,0 +1,17 @@
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Persistence.deps.json
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Persistence.runtimeconfig.json
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Persistence.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Persistence.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Domain.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\bin\Debug\net8.0\OakdaleRolbal.Domain.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.csproj.AssemblyReference.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.AssemblyInfoInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.AssemblyInfo.cs
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleR.79A6F4E5.Up2Date
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\refint\OakdaleRolbal.Persistence.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\OakdaleRolbal.Persistence.genruntimeconfig.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Persistence\obj\Debug\net8.0\ref\OakdaleRolbal.Persistence.dll

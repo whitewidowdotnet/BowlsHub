@@ -1,0 +1,11 @@
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\bin\Debug\net8.0\OakdaleRolbal.Domain.deps.json
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\bin\Debug\net8.0\OakdaleRolbal.Domain.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\bin\Debug\net8.0\OakdaleRolbal.Domain.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.AssemblyInfoInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.AssemblyInfo.cs
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\refint\OakdaleRolbal.Domain.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\OakdaleRolbal.Domain.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Domain\obj\Debug\net8.0\ref\OakdaleRolbal.Domain.dll

@@ -1,0 +1,15 @@
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\bin\Debug\net8.0\OakdaleRolbal.Application.deps.json
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\bin\Debug\net8.0\OakdaleRolbal.Application.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\bin\Debug\net8.0\OakdaleRolbal.Application.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\bin\Debug\net8.0\OakdaleRolbal.Domain.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\bin\Debug\net8.0\OakdaleRolbal.Domain.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.csproj.AssemblyReference.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.AssemblyInfoInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.AssemblyInfo.cs
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.csproj.CoreCompileInputs.cache
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleR.78D0BBEC.Up2Date
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\refint\OakdaleRolbal.Application.dll
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\OakdaleRolbal.Application.pdb
+C:\Users\Juand\RiderProjects\OakdaleRolbal\Backend\OakdaleRolbal.Application\obj\Debug\net8.0\ref\OakdaleRolbal.Application.dll
