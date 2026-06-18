@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OakdaleRolbal.Application.Interfaces;
+using OakdaleRolbal.Persistence.Identity;
 
 namespace OakdaleRolbal.Persistence;
 
@@ -10,18 +13,28 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-        services.AddDbContext<OakdaleRolbalDbContext>(options =>
+        if (string.IsNullOrWhiteSpace(connectionString))
         {
-            if (string.IsNullOrWhiteSpace(connectionString))
-            {
-                options.UseNpgsql("Host=localhost;Port=5432;Database=oakdalerolbal;Username=postgres;Password=postgres");
-                return;
-            }
+            throw new InvalidOperationException("Connection string 'DefaultConnection' is not configured.");
+        }
 
-            options.UseNpgsql(connectionString);
-        });
+        services.AddDbContext<OakdaleRolbalDbContext>(options => options.UseNpgsql(connectionString));
+
+        services
+            .AddIdentityCore<ApplicationUser>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddRoles<ApplicationRole>()
+            .AddEntityFrameworkStores<OakdaleRolbalDbContext>();
+
+        services.AddScoped<IAuthIdentityService, AuthIdentityService>();
 
         return services;
     }
 }
-

@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+
+# .NET / C#
+**/bin/
+**/obj/
+
+# Node / React / Next.js
+**/node_modules/
+**/build/
+**/.next/
+**/out/
+**/coverage/
+
+# Environment files
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local

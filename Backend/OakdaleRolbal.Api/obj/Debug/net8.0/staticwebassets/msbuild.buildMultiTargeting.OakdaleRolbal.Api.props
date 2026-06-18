@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\OakdaleRolbal.Api.props" />
-</Project>
