@@ -1,6 +1,6 @@
-﻿# OakdaleRolbal
+# BowlsLive
 
-Initial foundation for the Oakdale Rolbal platform.
+Initial foundation for the BowlsLive platform.
 
 ## Tech Stack
 
@@ -9,18 +9,18 @@ Initial foundation for the Oakdale Rolbal platform.
 
 ## Solution Layout
 
-- `Backend/OakdaleRolbal.Api`
-- `Backend/OakdaleRolbal.Application`
-- `Backend/OakdaleRolbal.Domain`
-- `Backend/OakdaleRolbal.Infrastructure`
-- `Backend/OakdaleRolbal.Persistence`
-- `Frontend/oakdalerolbal-web`
+- `Backend/BowlsLive.Api`
+- `Backend/BowlsLive.Application`
+- `Backend/BowlsLive.Domain`
+- `Backend/BowlsLive.Infrastructure`
+- `Backend/BowlsLive.Persistence`
+- `Frontend/bowlslive-web`
 
 ## Run Backend
 
 ```powershell
-dotnet restore .\OakdaleRolbal.sln
-dotnet run --project .\Backend\OakdaleRolbal.Api\OakdaleRolbal.Api.csproj
+dotnet restore .\BowlsLive.sln
+dotnet run --project .\Backend\BowlsLive.Api\BowlsLive.Api.csproj
 ```
 
 Backend URLs are shown in console output.
@@ -29,14 +29,14 @@ The API creates its database schema automatically on first run.
 ## Run Frontend
 
 ```powershell
-cd .\Frontend\oakdalerolbal-web
+cd .\Frontend\bowlslive-web
 npm install
 npm run dev
 ```
 
 Open `http://localhost:3000`.
 
-Create `Frontend\oakdalerolbal-web\.env.local` from `Frontend\oakdalerolbal-web\.env.example` when you want to override the default API URL.
+Create `Frontend\bowlslive-web\.env.local` from `Frontend\bowlslive-web\.env.example` when you want to override the default API URL.
 
 ## Auth Endpoints
 
@@ -47,8 +47,8 @@ Create `Frontend\oakdalerolbal-web\.env.local` from `Frontend\oakdalerolbal-web\
 ## Checks
 
 ```powershell
-dotnet build .\OakdaleRolbal.sln
-cd .\Frontend\oakdalerolbal-web
+dotnet build .\BowlsLive.sln
+cd .\Frontend\bowlslive-web
 npm run lint
 npm run build
 ```
