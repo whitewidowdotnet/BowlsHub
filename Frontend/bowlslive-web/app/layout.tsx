@@ -17,14 +17,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BowlsLive",
-  description: "Manage tournaments, track scores, and view live leaderboards.",
+  title: {
+    default: "BowlsLive — tournament software for bowls clubs",
+    template: "%s · BowlsLive",
+  },
+  description:
+    "Run bowls tournaments between clubs: entries, draws, live scoring and standings in one place.",
   applicationName: "BowlsLive",
   manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1f7a3f",
+  themeColor: "#7b2e3b",
 };
 
 export default function RootLayout({
@@ -37,7 +41,7 @@ export default function RootLayout({
       <body className="min-h-full">
         <AuthProvider>
           <div className="relative flex min-h-screen flex-col overflow-hidden bg-background text-foreground">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,_color-mix(in_oklch,var(--primary),white_65%)_0%,transparent_70%)] opacity-70" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top,_color-mix(in_oklch,var(--accent),white_55%)_0%,transparent_70%)] opacity-80" />
             <SiteHeader />
             <main className="relative flex-1">{children}</main>
           </div>

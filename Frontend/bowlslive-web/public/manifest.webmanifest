@@ -1,11 +1,11 @@
 {
   "name": "BowlsLive",
-  "short_name": "Rolbal",
-  "description": "Manage tournaments, track scores, and view live leaderboards.",
+  "short_name": "BowlsLive",
+  "description": "Run bowls tournaments between clubs: entries, draws, live scoring and standings.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1f7a3f",
+  "background_color": "#faf1d6",
+  "theme_color": "#7b2e3b",
   "icons": [
     {
       "src": "/icons/icon-192.svg",

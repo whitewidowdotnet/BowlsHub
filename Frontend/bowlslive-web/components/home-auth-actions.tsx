@@ -1,77 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { useAuth } from "@/components/auth/auth-provider";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+
+const primaryCta =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+const secondaryCta =
+  "inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background/70 px-6 text-sm font-semibold text-foreground transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30";
 
 export function HomeAuthActions() {
-  const { logout, session, status, user } = useAuth();
+  const { session, status, user } = useAuth();
 
   if (status === "loading") {
     return (
-      <section className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-sm">
-        <p className="text-sm font-medium text-muted-foreground">Checking your saved session...</p>
-      </section>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="h-12 w-44 animate-pulse rounded-xl bg-muted" />
+        <div className="h-12 w-32 animate-pulse rounded-xl bg-muted" />
+      </div>
     );
   }
 
-  if (!user || !session) {
+  if (user && session) {
     return (
-      <section className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-sm">
-        <div className="inline-flex rounded-2xl bg-primary/12 p-3 text-primary">
-          <ShieldCheck className="size-5" />
-        </div>
-        <h2 className="mt-5 text-2xl font-semibold tracking-tight">Identity and JWT are ready.</h2>
-        <p className="mt-4 text-sm leading-6 text-muted-foreground">
-          Register a user from the web app, receive an access token, and immediately call protected
-          API endpoints from the browser.
+      <div className="flex flex-col gap-4">
+        <p className="text-sm text-muted-foreground">
+          Signed in as <span className="font-medium text-foreground">{user.userName}</span>.
         </p>
-        <div className="mt-6 flex flex-col gap-3">
-          <Link
-            href="/register"
-            className={cn(buttonVariants({ size: "lg" }), "justify-center")}
-          >
-            <span className="inline-flex items-center gap-2">
-              Start with registration
-              <ArrowRight className="size-4" />
-            </span>
-          </Link>
-          <Link
-            href="/login"
-            className={cn(buttonVariants({ size: "lg", variant: "outline" }), "justify-center")}
-          >
-            I already have an account
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Link href="/dashboard" className={primaryCta}>
+            Go to my dashboard
+            <ArrowRight className="size-4" />
           </Link>
         </div>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-sm">
-      <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Signed in</p>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight">{user.userName}</h2>
-      <p className="mt-2 text-sm text-muted-foreground">{user.email}</p>
-      <div className="mt-6 space-y-3 rounded-[1.5rem] bg-muted/70 p-4 text-sm">
-        <p className="font-medium text-foreground">Active bearer session</p>
-        <p className="text-muted-foreground">
-          Token expires {new Date(session.expiresAtUtc).toLocaleString()}.
-        </p>
-      </div>
-      <div className="mt-6 flex flex-col gap-3">
-        <Link
-          href="/dashboard"
-          className={cn(buttonVariants({ size: "lg" }), "justify-center")}
-        >
-          Open dashboard
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Link href="/register" className={primaryCta}>
+          Register your club
+          <ArrowRight className="size-4" />
         </Link>
-        <Button variant="outline" size="lg" className="justify-center" onClick={logout}>
-          Sign out
-        </Button>
+        <Link href="/login" className={secondaryCta}>
+          Member sign in
+        </Link>
       </div>
-    </section>
+      <p className="text-sm text-muted-foreground">
+        Free to set up. No card needed to run your first tournament.
+      </p>
+    </div>
   );
 }

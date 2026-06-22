@@ -19,16 +19,11 @@
   <g clip-path="url(#round)">
     <rect width="512" height="512" fill="url(#bg)"/>
 
-    <!-- motion stripes trailing behind the ball -->
     <g stroke-linecap="round" fill="none">
-      <!-- maroon top group -->
       <line x1="178" y1="150" x2="288" y2="150" stroke="#7B2E3B" stroke-width="26"/>
       <line x1="132" y1="196" x2="252" y2="196" stroke="#7B2E3B" stroke-width="24"/>
-      <!-- gold mid group -->
       <line x1="96" y1="248" x2="246" y2="248" stroke="#B89640" stroke-width="30"/>
-      <!-- maroon lower group -->
       <line x1="62" y1="300" x2="248" y2="300" stroke="#7B2E3B" stroke-width="30"/>
-      <!-- gold bottom -->
       <line x1="124" y1="352" x2="278" y2="352" stroke="#B89640" stroke-width="26"/>
     </g>
     <g>
@@ -37,15 +32,11 @@
       <circle cx="40" cy="296" r="16" fill="#7B2E3B"/>
     </g>
 
-    <!-- ground shadow -->
     <ellipse cx="300" cy="408" rx="150" ry="20" fill="#0B0E16" opacity="0.85"/>
 
-    <!-- main bowls ball -->
     <circle cx="300" cy="252" r="122" fill="url(#ball)"/>
-    <!-- top-left rim highlight -->
     <path d="M226 178 A120 120 0 0 1 322 138" stroke="#7E8597" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.7"/>
 
-    <!-- concentric running-surface rings on the bowl face -->
     <g transform="rotate(-18 352 244)">
       <ellipse cx="352" cy="244" rx="66" ry="92" fill="none" stroke="#E7E9EE" stroke-width="9"/>
       <ellipse cx="352" cy="244" rx="48" ry="68" fill="none" stroke="#9AA0AE" stroke-width="6"/>
@@ -53,7 +44,6 @@
       <ellipse cx="352" cy="244" rx="19" ry="28" fill="url(#jack)"/>
     </g>
 
-    <!-- small gold jack -->
     <circle cx="432" cy="356" r="56" fill="url(#jack)"/>
   </g>
 </svg>
