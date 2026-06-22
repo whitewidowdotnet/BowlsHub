@@ -1,5 +1,11 @@
-import { CalendarDays, LineChart, Radio, Target, Trophy, Users } from "lucide-react";
+"use client";
 
+import { Activity, ArrowRight, CalendarDays, LineChart, Radio, ShieldCheck, Target, Trophy, Users, Waves } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+import { useAuth } from "@/components/auth/auth-provider";
 import { HomeAuthActions } from "@/components/home-auth-actions";
 
 const features = [
@@ -37,7 +43,15 @@ const steps = [
 ] as const;
 
 export default function Home() {
+  const router = useRouter();
+  const { status, user } = useAuth();
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    if (status === "authenticated" && user) {
+      router.replace("/dashboard");
+    }
+  }, [status, user, router]);
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-10 sm:px-6 lg:px-8 lg:py-16">

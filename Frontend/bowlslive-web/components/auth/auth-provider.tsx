@@ -3,9 +3,9 @@
 import {
   createContext,
   startTransition,
+  useCallback,
   useContext,
   useEffect,
-  useEffectEvent,
   useState,
 } from "react";
 
@@ -35,6 +35,20 @@ const STORAGE_KEY = "bowlslive.auth";
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+function normalizeUser(user: AuthUser): AuthUser {
+  return {
+    ...user,
+    roles: Array.isArray(user.roles) ? user.roles : [],
+  };
+}
+
+function normalizeSession(session: AuthResponse): AuthResponse {
+  return {
+    ...session,
+    user: normalizeUser(session.user),
+  };
+}
+
 function persistSession(nextSession: AuthResponse | null) {
   if (typeof window === "undefined") {
     return;
@@ -52,38 +66,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<AuthResponse | null>(null);
   const [status, setStatus] = useState<AuthStatus>("loading");
 
-  const applySession = useEffectEvent((nextSession: AuthResponse | null) => {
-    persistSession(nextSession);
-    setSession(nextSession);
-    setStatus(nextSession ? "authenticated" : "anonymous");
-  });
+  const applySession = useCallback((nextSession: AuthResponse | null) => {
+    const normalizedSession = nextSession ? normalizeSession(nextSession) : null;
+    persistSession(normalizedSession);
+    setSession(normalizedSession);
+    setStatus(normalizedSession ? "authenticated" : "anonymous");
+  }, []);
 
-  const refreshWithToken = useEffectEvent(async (accessToken: string) => {
-    try {
-      const user = await apiRequest<AuthUser>("/api/auth/me", { token: accessToken });
+  const refreshWithToken = useCallback(
+    async (accessToken: string) => {
+      try {
+        const user = normalizeUser(await apiRequest<AuthUser>("/api/auth/me", { token: accessToken }));
 
-      setSession((currentSession) => {
-        if (!currentSession || currentSession.accessToken !== accessToken) {
-          const refreshedSession = {
+        setSession((currentSession) => {
+          const refreshedSession = normalizeSession({
             accessToken,
             expiresAtUtc: currentSession?.expiresAtUtc ?? new Date().toISOString(),
             user,
-          };
+          });
 
           persistSession(refreshedSession);
           return refreshedSession;
-        }
+        });
 
-        const refreshedSession = { ...currentSession, user };
-        persistSession(refreshedSession);
-        return refreshedSession;
-      });
-
-      setStatus("authenticated");
-    } catch {
-      applySession(null);
-    }
-  });
+        setStatus("authenticated");
+      } catch {
+        applySession(null);
+      }
+    },
+    [applySession],
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -93,16 +105,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const serialized = window.localStorage.getItem(STORAGE_KEY);
 
     if (!serialized) {
-      setStatus("anonymous");
+      queueMicrotask(() => {
+        applySession(null);
+      });
       return;
     }
 
     try {
-      const storedSession = JSON.parse(serialized) as AuthResponse;
-      setSession(storedSession);
-      void refreshWithToken(storedSession.accessToken);
+      const storedSession = normalizeSession(JSON.parse(serialized) as AuthResponse);
+      queueMicrotask(() => {
+        applySession(storedSession);
+        void refreshWithToken(storedSession.accessToken);
+      });
     } catch {
-      applySession(null);
+      queueMicrotask(() => {
+        applySession(null);
+      });
     }
   }, [applySession, refreshWithToken]);
 

@@ -51,6 +51,16 @@ public sealed class AuthController(IMediator mediator) : ControllerBase
         return ToErrorResult(result.ErrorType, result.ErrorMessage, result.ValidationErrors);
     }
 
+    [Authorize]
+    [HttpPost("refresh")]
+    [ProducesResponseType(typeof(AuthResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<AuthResponse>> Refresh(CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(new RefreshCurrentUserTokenQuery(User), cancellationToken);
+        return ToAuthResponse(result);
+    }
+
     private ActionResult<AuthResponse> ToAuthResponse(Result<AuthResponseDto> result)
     {
         if (result.IsSuccess && result.Value is not null)
@@ -90,6 +100,6 @@ public sealed class AuthController(IMediator mediator) : ControllerBase
 
     private static AuthenticatedUserResponse ToUserResponse(AuthenticatedUserDto user)
     {
-        return new AuthenticatedUserResponse(user.Id, user.Email, user.UserName);
+        return new AuthenticatedUserResponse(user.Id, user.Email, user.UserName, user.Roles);
     }
 }

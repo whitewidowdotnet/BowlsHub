@@ -1,7 +1,47 @@
+// ─── Clubs ───────────────────────────────────────────────────────────────────
+
+export type ClubSummary = {
+  id: string;
+  name: string;
+  shortName: string;
+  slug: string;
+  isActive: boolean;
+};
+
+export type Club = {
+  id: string;
+  name: string;
+  shortName: string;
+  slug: string;
+  email: string | null;
+  phoneNumber: string | null;
+  isActive: boolean;
+  createdUtc: string;
+};
+
+export type CreateClubRequest = {
+  name: string;
+  shortName: string;
+  slug: string;
+  email?: string;
+  phoneNumber?: string;
+};
+
+export type UpdateClubRequest = {
+  name: string;
+  shortName: string;
+  email?: string;
+  phoneNumber?: string;
+  isActive: boolean;
+};
+
+// ─── Auth ─────────────────────────────────────────────────────────────────────
+
 export type AuthUser = {
   id: string;
   email: string;
   userName: string;
+  roles: string[];
 };
 
 export type AuthResponse = {
@@ -68,6 +108,44 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
   return payload as T;
 }
 
+export async function getClubs(): Promise<ClubSummary[]> {
+  return apiRequest<ClubSummary[]>("/api/clubs");
+}
+
+export async function getClub(slug: string): Promise<Club> {
+  return apiRequest<Club>(`/api/clubs/${slug}`);
+}
+
+export async function createClub(request: CreateClubRequest, token: string): Promise<Club> {
+  return apiRequest<Club>("/api/clubs", {
+    method: "POST",
+    body: JSON.stringify(request),
+    token,
+  });
+}
+
+export async function updateClub(id: string, request: UpdateClubRequest, token: string): Promise<Club> {
+  return apiRequest<Club>(`/api/clubs/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(request),
+    token,
+  });
+}
+
+export async function deleteClub(id: string, token: string): Promise<void> {
+  await apiRequest<unknown>(`/api/clubs/${id}`, {
+    method: "DELETE",
+    token,
+  });
+}
+
+export async function refreshAuthSession(token: string): Promise<AuthResponse> {
+  return apiRequest<AuthResponse>("/api/auth/refresh", {
+    method: "POST",
+    token,
+  });
+}
+
 function getErrorMessage(payload: Record<string, unknown> | null) {
   if (!payload) {
     return null;
@@ -75,6 +153,10 @@ function getErrorMessage(payload: Record<string, unknown> | null) {
 
   if (typeof payload.title === "string" && payload.title) {
     return payload.title;
+  }
+
+  if (payload && typeof payload.detail === "string" && payload.detail) {
+    return payload.detail;
   }
 
   if (typeof payload.message === "string" && payload.message) {

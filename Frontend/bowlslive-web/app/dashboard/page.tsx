@@ -104,6 +104,14 @@ export default function DashboardPage() {
               </dt>
               <dd className="mt-1 font-medium">{user.email}</dd>
             </div>
+            <div className="rounded-xl bg-muted/70 px-4 py-3">
+              <dt className="text-muted-foreground">User ID</dt>
+              <dd className="mt-1 break-all font-medium">{user.id}</dd>
+            </div>
+            <div className="rounded-xl bg-muted/70 px-4 py-3">
+              <dt className="text-muted-foreground">Roles</dt>
+              <dd className="mt-1 font-medium">{user.roles?.length ? user.roles.join(", ") : "No roles assigned"}</dd>
+            </div>
           </dl>
         </article>
 

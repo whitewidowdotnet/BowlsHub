@@ -10,13 +10,13 @@ public sealed class AuthIdentityService(UserManager<ApplicationUser> userManager
     public async Task<AuthIdentityUser?> FindByEmailAsync(string email, CancellationToken cancellationToken)
     {
         var user = await userManager.FindByEmailAsync(email);
-        return ToModel(user);
+        return await ToModelAsync(user);
     }
 
     public async Task<AuthIdentityUser?> FindByUserNameAsync(string userName, CancellationToken cancellationToken)
     {
         var user = await userManager.FindByNameAsync(userName);
-        return ToModel(user);
+        return await ToModelAsync(user);
     }
 
     public async Task<CreateAuthIdentityUserResult> CreateUserAsync(
@@ -39,7 +39,15 @@ public sealed class AuthIdentityService(UserManager<ApplicationUser> userManager
             return new CreateAuthIdentityUserResult(false, null, ToDictionary(result.Errors));
         }
 
-        return new CreateAuthIdentityUserResult(true, ToModel(user), new Dictionary<string, string[]>());
+        var roleResult = await userManager.AddToRoleAsync(user, ApplicationRoles.ClubMember);
+
+        if (!roleResult.Succeeded)
+        {
+            await userManager.DeleteAsync(user);
+            return new CreateAuthIdentityUserResult(false, null, ToDictionary(roleResult.Errors));
+        }
+
+        return new CreateAuthIdentityUserResult(true, await ToModelAsync(user), new Dictionary<string, string[]>());
     }
 
     public async Task<AuthIdentityUser?> ValidateCredentialsAsync(
@@ -55,26 +63,29 @@ public sealed class AuthIdentityService(UserManager<ApplicationUser> userManager
         }
 
         var isValid = await userManager.CheckPasswordAsync(user, password);
-        return isValid ? ToModel(user) : null;
+        return isValid ? await ToModelAsync(user) : null;
     }
 
     public async Task<AuthIdentityUser?> GetCurrentUserAsync(ClaimsPrincipal principal)
     {
         var user = await userManager.GetUserAsync(principal);
-        return ToModel(user);
+        return await ToModelAsync(user);
     }
 
-    private static AuthIdentityUser? ToModel(ApplicationUser? user)
+    private async Task<AuthIdentityUser?> ToModelAsync(ApplicationUser? user)
     {
         if (user is null)
         {
             return null;
         }
 
+        var roles = await userManager.GetRolesAsync(user);
+
         return new AuthIdentityUser(
             user.Id,
             user.Email ?? string.Empty,
-            user.UserName ?? string.Empty);
+            user.UserName ?? string.Empty,
+            roles.ToArray());
     }
 
     private static Dictionary<string, string[]> ToDictionary(IEnumerable<IdentityError> errors)

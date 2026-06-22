@@ -23,7 +23,13 @@ export function SiteHeader() {
           <span className="text-lg">BowlsLive</span>
         </Link>
 
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
+            Home
+          </Link>
+          <Link href="/clubs" className="text-sm text-muted-foreground hover:text-foreground">
+            Clubs
+          </Link>
           {user ? (
             <>
               <Link
@@ -38,10 +44,7 @@ export function SiteHeader() {
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
-              >
+              <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">
                 Sign in
               </Link>
               <Link

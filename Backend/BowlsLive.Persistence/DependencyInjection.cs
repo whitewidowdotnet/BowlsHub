@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BowlsLive.Application.Interfaces;
 using BowlsLive.Persistence.Identity;
+using BowlsLive.Persistence.Repositories;
 
 namespace BowlsLive.Persistence;
 
@@ -34,6 +35,7 @@ public static class DependencyInjection
             .AddEntityFrameworkStores<BowlsLiveDbContext>();
 
         services.AddScoped<IAuthIdentityService, AuthIdentityService>();
+        services.AddScoped<IClubRepository, ClubRepository>();
 
         return services;
     }

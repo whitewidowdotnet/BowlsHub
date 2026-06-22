@@ -32,7 +32,7 @@ public sealed class LoginRequest
     public string Password { get; init; } = string.Empty;
 }
 
-public sealed record AuthenticatedUserResponse(string Id, string Email, string UserName);
+public sealed record AuthenticatedUserResponse(string Id, string Email, string UserName, IReadOnlyList<string> Roles);
 
 public sealed record AuthResponse(
     string AccessToken,
